@@ -1,7 +1,6 @@
 ---
-id: demo
 title: DeMo
-sidebar_label: Demo-in-menu
+layout: default
 ---
 
 This is my demo page
