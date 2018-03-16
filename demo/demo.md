@@ -1,7 +1,8 @@
 ---
-title: DeMo
+title: "DeMo"
+toc: true
 ---
 
-#Demo title
+# Demo title
 
 This is my demo page
