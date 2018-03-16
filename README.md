@@ -2,8 +2,8 @@
 
 # Test
 
-[DEMO 1](demo/demo)
-[DEMO 2](demo)
+[DEMO](demo/demo)
+[INSTALL](install)
 
 # OpenStack Best Practices
 
