@@ -1,6 +1,7 @@
 ---
 title: DeMo
-layout: default
 ---
+
+#Demo title
 
 This is my demo page
