@@ -6,6 +6,9 @@
 [DEMO](demo/demo)
 [INSTALL](install)
 
+[DEMO README 1](demo)
+[DEMO README 2](demo/README.md)
+
 # OpenStack Best Practices
 
 # Cinder 
