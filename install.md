@@ -3,4 +3,6 @@ title: Install
 layout: default
 ---
 
-Install
+# Install
+
+content
