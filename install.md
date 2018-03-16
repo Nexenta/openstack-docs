@@ -1,6 +1,6 @@
 ---
-title: Install
-layout: default
+title: "Install"
+toc: true
 ---
 
 # Install
