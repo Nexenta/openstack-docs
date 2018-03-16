@@ -1,4 +1,5 @@
 {:toc}
+[[TOC]]
 # Test
 
 [DEMO 1](demo/demo)
