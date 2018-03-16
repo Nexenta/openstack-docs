@@ -1,5 +1,5 @@
 {:toc}
-[[TOC]]
+
 # Test
 
 [DEMO 1](demo/demo)
@@ -7,19 +7,7 @@
 
 # OpenStack Best Practices
 
-
-## Cinder Feature List
-| Feature | NexentaStor 4.x | NexentaStor 5.x |
-|---|----|----|
-| Create Volume | Implemented | Implemented |
-
-Nexenta and OpenStack Best Practices
-
-
-
 # Cinder 
-
-[http://content.mirantis.com/rs/451-RBY-185/images/NexentaStor_Solutions_Guide_for_OpenStack_1.0_1.pdf](http://content.mirantis.com/rs/451-RBY-185/images/NexentaStor_Solutions_Guide_for_OpenStack_1.0_1.pdf)
 
 ## Supported OpenStack Releases
 
@@ -222,7 +210,7 @@ Nexenta and OpenStack Best Practices
 
 It’s recommended to get the latest driver from Nexenta’s repository: [https://github.com/Nexenta/cinder/](https://github.com/Nexenta/cinder/)
 
-The **b****ranches** in the repository correspond with Openstack releases.
+The branches in the repository correspond with Openstack releases.
 
 To following command can be used to download the exact version w/o having to switch branches
 
