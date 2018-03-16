@@ -1,15 +1,18 @@
 {:toc}
-
-# OpenStack Best Practices
+# Test
 
 [DEMO 1](demo/demo)
 [DEMO 2](demo)
 
-NexentaEdge is designed to run in Linux containers, as bare-metal on-premise or inside a virtual machine in the cloud. It is high performance scale-out storage solution with File, Block and Object interfaces tightly integrated with container application frameworks.
+# OpenStack Best Practices
 
-To install NexentaEdge DevOps Edition you need at least one Linux server meeting the requirements listed below.
 
-## Cinder
+## Cinder Feature List
+| Feature | NexentaStor 4.x | NexentaStor 5.x |
+|---|----|----|
+| Create Volume | Implemented | Implemented |
+
+
 ### Requirements and Limitations
 It is highly recommended that you run NexentaEdge DevOps Edition on a system with at least 16GB RAM.
 
