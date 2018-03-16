@@ -2,6 +2,9 @@
 
 # OpenStack Solutions Documentation
 
+(DEMO 1)[/demo/demo]
+(DEMO 2)[/demo]
+
 NexentaEdge is designed to run in Linux containers, as bare-metal on-premise or inside a virtual machine in the cloud. It is high performance scale-out storage solution with File, Block and Object interfaces tightly integrated with container application frameworks.
 
 To install NexentaEdge DevOps Edition you need at least one Linux server meeting the requirements listed below.
