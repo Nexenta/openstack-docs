@@ -1,6 +1,6 @@
 {:toc}
 
-# OpenStack Solutions Documentation
+# OpenStack Best Practices
 
 [DEMO 1](demo/demo)
 [DEMO 2](demo)
@@ -9,6 +9,7 @@ NexentaEdge is designed to run in Linux containers, as bare-metal on-premise or 
 
 To install NexentaEdge DevOps Edition you need at least one Linux server meeting the requirements listed below.
 
+## Cinder
 ### Requirements and Limitations
 It is highly recommended that you run NexentaEdge DevOps Edition on a system with at least 16GB RAM.
 
