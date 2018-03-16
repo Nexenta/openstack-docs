@@ -1,9 +1,3 @@
----
-id: index
-title: OpenStack Solutions Documentation
-sidebar_label: Main Page
----
-
 {:toc}
 
 # OpenStack Solutions Documentation
