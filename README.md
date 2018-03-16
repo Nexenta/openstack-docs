@@ -1,4 +1,4 @@
-{:toc max_level=3 }
+{:toc}
 
 # openstack-docs
 OpenStack Solutions Documentation
