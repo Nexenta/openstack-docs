@@ -1,8 +1,4 @@
----
-toc: true
----
-
-{:toc max_level=3}
+{:toc max_level=10}
 
 # Test
 
