@@ -1,14 +1,12 @@
+---
+id: index
+title: OpenStack Solutions Documentation
+sidebar_label: Main Page
+---
+
 {:toc}
 
 # OpenStack Solutions Documentation
-
----
-
----
-id: installation
-title: Installation NexentaEdge DevOps Edition
-sidebar_label: Installation
----
 
 NexentaEdge is designed to run in Linux containers, as bare-metal on-premise or inside a virtual machine in the cloud. It is high performance scale-out storage solution with File, Block and Object interfaces tightly integrated with container application frameworks.
 
