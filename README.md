@@ -1173,10 +1173,25 @@ List of all available options:
 </table>
 
 
-Docs - https://confluence.nexenta.com/display/CO/Project%3A+OpenStack+Manila
-
-[https://confluence.nexenta.com/display/SUP/OpenStack+-+Support#expand-InstallingUpgradingNexentaManilaDriver](https://confluence.nexenta.com/display/SUP/OpenStack+-+Support#expand-InstallingUpgradingNexentaManilaDriver)
-
-[https://confluence.nexenta.com/display/CO/Manila+User+Guide#expand-NexentaStor4xdriverconfiguration](https://confluence.nexenta.com/display/CO/Manila+User+Guide#expand-NexentaStor4xdriverconfiguration)
-
+# Escalating Issue to support
+Please provide the following information:
+* NexentaStor/NexentaEdge version 
+* OpenStack version ( e.g. Icehouse, Juno, Kilo, Liberty, Mitaka)
+* nova-manage version (for reference use - https://wiki.openstack.org/wiki/Releases)
+* Cinder driver version
+** go to <cinder_lib_location>/cinder/volume/drivers/nexenta/nfs.py (or /iscsi.py): comments on top have version
+* Openstack service type ( e.g. Cinder, Glance, Manila, Swift)
+* OS version (e.g. Ubuntu 14.04, RHEL 7.0.x, CentOS 7.0.x)
+** cat /etc/system-release
+* HA configuration ( HA, active-active) ; provide cluster status info using nmc - c "show group rsf-cluster"
+* Collector bundle
+* Copy of Cinder drivers folder 
+** cinder/volumes/drivers/
+Cinder.conf file
+** /etc/cinder/cinder.conf (default path)
+Cinder volume log
+** /var/log/scheduler.log (default path)
+Cinder scheduler log
+** /var/log/scheduler.log (default path)
+* Steps to reproduce the issue, screenshot of console log, any custom scripts that customer ran, etc 
 
