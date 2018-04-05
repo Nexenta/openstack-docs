@@ -1,19 +1,8 @@
-* TOC
-{:toc}
-
-# Test
-
-[DEMO](demo/demo)
-[INSTALL](install)
-
-[DEMO README 1](demo)
-[DEMO README 2](demo/README.md)
-
 # OpenStack Best Practices
 
-# Cinder 
+## Cinder 
 
-## Supported OpenStack Releases
+### Supported OpenStack Releases
 
 * NexentaStor 4.x - Juno+
 
@@ -21,7 +10,7 @@
 
 * NexentaEdge 1.2 - Newton+
 
-## Feature List
+### Feature List
 
 <table>
   <tr>
@@ -174,7 +163,7 @@
 </table>
 
 
-## Cinder Driver Prerequisites
+### Cinder Driver Prerequisites
 
 #### NexentaStor 4.0
 
@@ -210,7 +199,7 @@
 
 * Storage Network configured between NexentaEdge Gateway and OpenStack Hypervisors (Recommended 10GBE, MTU 9000)
 
-## Where to get Cinder Drivers?
+### Where to get Cinder Drivers?
 
 It’s recommended to get the latest driver from Nexenta’s repository: [https://github.com/Nexenta/cinder/](https://github.com/Nexenta/cinder/)
 
@@ -225,7 +214,7 @@ Nexenta Drivers are located under the following path:
 
 The path includes driver for NexentaStor 4.x, NexentaStor 5.x and NexnetaEdge 2.0. Make sure to copy the whole folder.
 
-## Installation Steps
+### Installation Steps
 
 1. Determine cinder driver location path used in your environment
 
@@ -245,7 +234,7 @@ cp -rf cinder/cinder/volume/drivers/nexenta /usr/lib/python2.7/dist-packages/cin
 
     1. Need an example here
 
-## NexentaStor 4.x NFS - List of all available options
+### NexentaStor 4.x NFS - List of all available options
 
 <table>
   <tr>
@@ -348,7 +337,7 @@ nas_secure_file_operations=False
 </table>
 
 
-## NexentaStor 4.x iSCSI - List of all available options
+### NexentaStor 4.x iSCSI - List of all available options
 
 <table>
   <tr>
@@ -476,7 +465,7 @@ nexenta_volume=Vol1
 </table>
 
 
-## NexentaStor 5.x NFS - List of all available options
+### NexentaStor 5.x NFS - List of all available options
 
 <table>
   <tr>
@@ -574,7 +563,7 @@ nas_secure_file_operations = False</td>
 </table>
 
 
-## NexentaStor 5.x iSCSI - List of all available options
+### NexentaStor 5.x iSCSI - List of all available options
 
 <table>
   <tr>
@@ -702,7 +691,7 @@ nexenta_volume_group = iscsi</td>
 </table>
 
 
-## NexentaEdge 1.2 iSCSI - List of all available options
+### NexentaEdge 1.2 iSCSI - List of all available options
 
 <table>
   <tr>
@@ -805,7 +794,7 @@ After configuring the cinder.conf, restart the cinder-volume service
 
 service cinder-volume restart (may differ depending on OS)
 
-## NexentaStor 4.x vs. 5.x Options Conversion Table
+### NexentaStor 4.x vs. 5.x Options Conversion Table
 
 <table>
   <tr>
@@ -844,7 +833,7 @@ nexenta_iscsi_target_portal_port</td>
 </table>
 
 
-## iSCSI Multipath
+### iSCSI Multipath
 
 Openstack Nova provides the ability to use iSCSI Multipath. To enable Multipath you need to add following line into nova.conf in the [libvirt] section:
 
@@ -855,7 +844,7 @@ iscsi_use_multipath = True
 For this change to take place you need to restart nova-compute service:
 service restart nova-compute
 
-## Backup
+### Backup
 
 This section describes how to configure the cinder-backup service and cinder NFS driver on top NexentaStor NFS share. Official documentation link: [NFS backup driver](https://docs.openstack.org/newton/config-reference/block-storage/backup/nfs-backup-driver.html)
 
@@ -905,7 +894,7 @@ CLI@host> nfs share -o uidMap='*:root:@10.1.1.2' pool/nfs/backup</td>
 
 Note: 10.1.1.2 - IP address of Openstack Cinder host.
 
-## Cinder and Replication
+### Cinder and Replication
 
 * Replication on Consistency group level
 
@@ -913,7 +902,7 @@ Note: 10.1.1.2 - IP address of Openstack Cinder host.
 
 * Cinder snapshots are omitted in replication in 5.1.x (We expect fix in 5.2FP1)
 
-## Troubleshooting
+### Troubleshooting
 
 grep for "Traceback" in your Openstack logs folder, default is
 
@@ -930,24 +919,7 @@ debug=True
 And restart cinder-volume:
 service cinder-volume restart
 
-## Known Issues
-
-* Replication of clones
-
-* Cinder Creation after failover fails
-
-    * [https://jira.nexenta.com/browse/NEX-15375](https://jira.nexenta.com/browse/NEX-15375)
-
-* Cinder volume mount after failover goes into read only
-
-    * [https://jira.nexenta.com/browse/NEX-15375](https://jira.nexenta.com/browse/NEX-15375)
-
-Do we need to talk about SSL issues?
-	driver_ssl_cert_verify = false 
-
-Only depends on the certificate that is used.
-
-# Glance
+## Glance
 
 What it is:
 
@@ -959,13 +931,13 @@ Steps
 
 Validation
 
-# Manila
+## Manila
 
 ### Overview
 
-#### ![image alt text](image_0.png)
+ToDo
 
-#### **Supported operations are:**
+### **Supported operations are:**
 
 * Create NFS share.
 
@@ -1173,7 +1145,7 @@ List of all available options:
 </table>
 
 
-# Escalating Issue to support
+### Escalating Issue to support
 Please provide the following information:
 * NexentaStor/NexentaEdge version 
 * OpenStack version ( e.g. Icehouse, Juno, Kilo, Liberty, Mitaka)
