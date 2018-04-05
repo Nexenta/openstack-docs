@@ -1145,7 +1145,7 @@ List of all available options:
 </table>
 
 
-### Escalating Issue to support
+## Escalating Issue to support
 Please provide the following information:
 * NexentaStor/NexentaEdge version 
 * OpenStack version ( e.g. Icehouse, Juno, Kilo, Liberty, Mitaka)
