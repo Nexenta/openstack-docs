@@ -744,6 +744,18 @@ If it is equal zero, 8443 for HTTPS and 8080 for HTTP is used</td>
     <td>Password to connect to NexentaEdge</td>
   </tr>
   <tr>
+    <td>nexenta_replication_count</td>
+    <td>3</td>
+    <td></td>
+    <td>NexentaEdge iSCSI LUN object replication count.</td>
+  </tr>
+  <tr>
+    <td>nexenta_encryption</td>
+    <td>False</td>
+    <td></td>
+    <td>Defines whether NexentaEdge iSCSI LUN object has encryption enabled.</td>
+  </tr>  
+  <tr>
     <td>nexenta_lun_container</td>
     <td></td>
     <td></td>
