@@ -232,7 +232,11 @@ cp -rf cinder/cinder/volume/drivers/nexenta /usr/lib/python2.7/dist-packages/cin
 
 4. Restart Cinder Service
 
-    1. Need an example here
+    a. Systemd based system:
+        `$ sudo systemctl restart openstack-cinder-volume.service`
+    
+    b. Upstart/SysV based system:
+        `$ sudo service cinder-volume restart`
 
 ### NexentaStor 4.x NFS - List of all available options
 
