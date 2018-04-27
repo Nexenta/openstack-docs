@@ -156,7 +156,7 @@
   <tr>
     <td>Snapshot Revert</td>
     <td>not implemented</td>
-    <td>not implemented</td>
+    <td>implemented in Pike and later</td>
     <td>not implemented</td>
     <td>no</td>
   </tr>
