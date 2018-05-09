@@ -201,13 +201,13 @@
 
 ### Where to get Cinder Drivers?
 
-It’s recommended to get the latest driver from Nexenta’s repository: [https://github.com/Nexenta/cinder/](https://github.com/Nexenta/cinder/)
+It’s recommended to get the latest driver from Nexenta’s repository: [https://github.com/Nexenta/cinder](https://github.com/Nexenta/cinder)
 
 The branches in the repository correspond with Openstack releases.
 
 To following command can be used to download the exact version w/o having to switch branches
 
-git clone -b stable/mitaka - this will download the exact version, no need to switch
+```git clone -b stable/mitaka``` - this will download the exact version, no need to switch
 
 Nexenta Drivers are located under the following path:
 [https://github.com/Nexenta/cinder/tree/stable/mitaka/cinder/volume/drivers/nexenta](https://github.com/Nexenta/cinder/tree/stable/mitaka/cinder/volume/drivers/nexenta)
@@ -219,24 +219,20 @@ The path includes driver for NexentaStor 4.x, NexentaStor 5.x and NexnetaEdge 2.
 1. Determine cinder driver location path used in your environment
 
 2. Clone or download the correct version of the drivers, unzip if downloaded and copy to the cinder location. For example drivers for Mitaka release:
-
-<table>
-  <tr>
-    <td>git clone -b stable/mitaka https://github.com/Nexenta/cinder/
-cp -rf cinder/cinder/volume/drivers/nexenta /usr/lib/python2.7/dist-packages/cinder/volume/drivers/</td>
-  </tr>
-</table>
-
+```
+$ git clone -b stable/mitaka https://github.com/Nexenta/cinder nexenta-cinder
+$ cp -rf nexenta-cinder/cinder/volume/drivers/nexenta /usr/lib/python2.7/dist-packages/cinder/volume/drivers
+```
 
 3. Configure cinder.conf
 
 4. Restart Cinder Service
 
     a. Systemd based system:
-        `$ sudo systemctl restart openstack-cinder-volume.service`
+        ```$ sudo systemctl restart openstack-cinder-volume.service```
     
     b. Upstart/SysV based system:
-        `$ sudo service cinder-volume restart`
+        ```$ sudo service cinder-volume restart```
 
 ### NexentaStor 4.x NFS - List of all available options
 
@@ -316,30 +312,24 @@ cp -rf cinder/cinder/volume/drivers/nexenta /usr/lib/python2.7/dist-packages/cin
 </table>
 
 
-#### NexentaStor 4.x NFS cinder.conf minimal config
+#### NexentaStor 4.x NFS minimal cinder.conf
+```
+[DEFAULT]
+driver_ssl_cert_verify = False
 
-<table>
-  <tr>
-    <td>     [ns_nfs]
-volume_driver=cinder.volume.drivers.nexenta.nfs.NexentaNfsDriver
-nexenta_shares_config=/home/ubuntu/shares.cfg
-nfs_shares_config=/home/ubuntu/shares.cfg
-volume_backend_name=ns_nfs
-nas_secure_file_operations=False
-</td>
-  </tr>
-</table>
+[ns_nfs]
+volume_driver = cinder.volume.drivers.nexenta.nfs.NexentaNfsDriver
+volume_backend_name = ns_nfs
+nexenta_shares_config = /etc/cinder/shares.cfg
+nfs_shares_config = /etc/cinder/shares.cfg
+nas_secure_file_operations = False
+```
 
-
-**Note:** For NexentaStor 4.x NFS driver a shares config file must be present. This file should consist of 1 or multiple lines with 2 columns separated by a space. The first column represents the NFS filesystem path for the mount command, and the second is url for Rest calls.  Example:
-
-<table>
-  <tr>
-    <td>10.0.0.1:/volumes/Vol1/nfs_share http://admin:nexenta@10.0.0.1:8457
-10.0.0.100:/volumes/Vol2/cinder-volumes http://admin:secret@10.0.0.100:8457</td>
-  </tr>
-</table>
-
+**Note:** For NexentaStor 4.x NFS driver a shares config file must be present. This file should consist of 1 or multiple lines with 2 columns separated by a space. The first column represents the NFS filesystem path for the mount command, and the second is url for Rest calls. Example:
+```
+10.0.0.1:/volumes/Vol1/nfs_share http://admin:nexenta@10.0.0.1:8457
+10.0.0.100:/volumes/Vol2/cinder-volumes http://admin:secret@10.0.0.100:8457
+```
 
 ### NexentaStor 4.x iSCSI - List of all available options
 
@@ -452,22 +442,20 @@ If it is equal zero, 8443 for HTTPS and 8080 for HTTP is used</td>
 </table>
 
 
-#### NexentaStor 4.x iSCSI cinder.conf minimal config
+#### NexentaStor 4.x iSCSI minimal cinder.conf
+```
+[DEFAULT]
+driver_ssl_cert_verify = False
 
-<table>
-  <tr>
-    <td>[ns_iscsi]
-volume_driver=cinder.volume.drivers.nexenta.iscsi.NexentaISCSIDriver
-volume_backend_name=ns_iscsi
-nexenta_host=10.0.0.1
-nexenta_rest_port=8457
-nexenta_user=admin
-nexenta_password=nexenta
-nexenta_volume=Vol1
-</td>
-  </tr>
-</table>
-
+[ns_iscsi]
+volume_driver = cinder.volume.drivers.nexenta.iscsi.NexentaISCSIDriver
+volume_backend_name = ns_iscsi
+nexenta_host = 10.0.0.1
+nexenta_rest_port = 8457
+nexenta_user = admin
+nexenta_password = nexenta
+nexenta_volume = tank
+```
 
 ### NexentaStor 5.x NFS - List of all available options
 
@@ -547,25 +535,42 @@ If it is equal to zero, 8443 for HTTPS and 8080 for HTTP is used</td>
 </table>
 
 
-#### NexentaStor 5.x NFS cinder.conf minimal config
+#### NexentaStor 5.x NFS minimal cinder.conf
+```
+[DEFAULT]
+driver_ssl_cert_verify = False
 
-<table>
-  <tr>
-    <td>[ns5_nfs]
-volume_driver=cinder.volume.drivers.nexenta.ns5.nfs.NexentaNfsDriver
-nas_host=10.0.0.1 (for HA it must be VIP)
-nexenta_rest_address=10.0.1.1 (for HA provide 2 IPs, comma separated)
+[ns5_nfs]
+volume_driver = cinder.volume.drivers.nexenta.ns5.nfs.NexentaNfsDriver
+volume_backend_name = ns5_nfs
+nas_host = 10.0.0.1
+nexenta_rest_address = 10.0.1.1
 nexenta_rest_port = 8443
-nas_share_path=pool1/nfs_share
+nas_share_path = pool1/nfs_share
 nexenta_user = admin
 nexenta_password = Nexenta@1
 nas_mount_options = vers=4
-volume_backend_name = ns5_nfs
-nexenta_sparsed_volumes = True
-nas_secure_file_operations = False</td>
-  </tr>
-</table>
+nas_secure_file_operations = False
+```
 
+#### NexentaStor 5.x NFS HA cinder.conf
+```
+[DEFAULT]
+driver_ssl_cert_verify = False
+
+[ns5_nfs]
+volume_driver = cinder.volume.drivers.nexenta.ns5.nfs.NexentaNfsDriver
+volume_backend_name = ns5_nfs
+nas_host = 10.0.0.1
+nexenta_rest_address = 10.0.1.1,10.0.1.2
+nexenta_rest_port = 8443
+nas_share_path = pool1/nfs_share
+nexenta_user = admin
+nexenta_password = Nexenta@1
+nas_mount_options = vers=4
+nexenta_sparsed_volumes = True
+nas_secure_file_operations = False
+```
 
 ### NexentaStor 5.x iSCSI - List of all available options
 
@@ -678,22 +683,43 @@ If it is equal zero, 8443 for HTTPS and 8080 for HTTP is used</td>
 
 
 #### NexentaStor 5.x iSCSI cinder.conf minimal config
+```
+[DEFAULT]
+driver_ssl_cert_verify = False
 
-<table>
-  <tr>
-    <td>[ns5_iscsi]
+[ns5_iscsi]
 volume_driver = cinder.volume.drivers.nexenta.ns5.iscsi.NexentaISCSIDriver
 volume_backend_name = ns5_iscsi
-nexenta_host = 10.0.0.1 (for HA it must be VIP)
-nexenta_rest_address=10.0.1.1 (for HA provide 2 IPs, comma separated)
+nexenta_host = 10.0.0.1
+nexenta_rest_address = 10.0.1.1
 nexenta_rest_port = 8443
 nexenta_user = admin
 nexenta_password = Nexenta@1
 nexenta_volume = pool1
-nexenta_volume_group = iscsi</td>
-  </tr>
-</table>
+nexenta_volume_group = iscsi
+```
 
+#### NexentaStor 5.x iSCSI cinder.conf HA config
+```
+[DEFAULT]
+driver_ssl_cert_verify = False
+
+[ns5_iscsi]
+volume_driver = cinder.volume.drivers.nexenta.ns5.iscsi.NexentaISCSIDriver
+volume_backend_name = ns5_iscsi
+nexenta_host = 10.0.0.1
+nexenta_rest_address = 10.0.1.1,10.1.1.2
+nexenta_rest_port = 8443
+nexenta_user = admin
+nexenta_password = Nexenta@1
+nexenta_volume = pool1
+nexenta_volume_group = iscsi
+nexenta_iscsi_target_portals = 10.0.0.2:3260,10.0.0.3:3261,10.0.0.4
+nexenta_target_prefix = iqn.2005-07.com.nexenta:02:cinder
+nexenta_target_group_prefix = cinder
+nexenta_host_group_prefix = cinder
+nexenta_luns_per_target = 128
+```
 
 ### NexentaEdge 1.2 iSCSI - List of all available options
 
@@ -787,10 +813,8 @@ If it is equal zero, 8443 for HTTPS and 8080 for HTTP is used</td>
 
 
 #### NexentaEdge 1.2 iSCSI cinder.conf minimal config
-
-<table>
-  <tr>
-    <td>[nedge_iscsi]
+```
+[nedge_iscsi]
 volume_driver=cinder.volume.drivers.nexenta.nexentaedge.iscsi.NexentaEdgeISCSIDriver
 volume_backend_name = nedge
 nexenta_rest_address = 10.0.0.1
@@ -801,14 +825,12 @@ nexenta_rest_user = admin
 nexenta_rest_password = nexenta
 nexenta_lun_container = cl/tn/bk
 nexenta_iscsi_service = iscsi
-nexenta_client_address = 10.0.1.1</td>
-  </tr>
-</table>
-
+nexenta_client_address = 10.0.1.1
+```
 
 After configuring the cinder.conf, restart the cinder-volume service
 
-service cinder-volume restart (may differ depending on OS)
+```sudo service cinder-volume restart``` (may differ depending on OS)
 
 ### NexentaStor 4.x vs. 5.x Options Conversion Table
 
@@ -852,37 +874,30 @@ nexenta_iscsi_target_portal_port</td>
 ### iSCSI Multipath
 
 Openstack Nova provides the ability to use iSCSI Multipath. To enable Multipath you need to add following line into nova.conf in the [libvirt] section:
-
+```
 [libvirt]
-
 iscsi_use_multipath = True
+```
 
-For this change to take place you need to restart nova-compute service:
-service restart nova-compute
+For this change to take place you need to restart nova-compute service: ```$ sudo service restart nova-compute```
 
 ### Backup
 
 This section describes how to configure the cinder-backup service and cinder NFS driver on top NexentaStor NFS share. Official documentation link: [NFS backup driver](https://docs.openstack.org/newton/config-reference/block-storage/backup/nfs-backup-driver.html)
 
 Example section for cinder.conf:
-
-<table>
-  <tr>
-    <td>[DEFAULT]
+```
+[DEFAULT]
 backup_driver = cinder.backup.drivers.nfs
 backup_share = 10.1.1.1:/pool/nfs/backup
-backup_mount_options = vers=4</td>
-  </tr>
-</table>
-
+backup_mount_options = vers=4
+```
 
 Note: 10.1.1.1 - IP address of NexentaStor, /pool/nfs/backup - NFS share path.
 
 Steps for NexentaStor 4.x:
-
-<table>
-  <tr>
-    <td>nmc@host1:/$ create folder pool/nfs/backup
+```
+nmc@host1:/$ create folder pool/nfs/backup
 nmc@host1:/$ share folder pool/nfs/backup nfs                                                                                           
 Auth Type            : sys
 Anonymous            : false
@@ -891,22 +906,16 @@ Read-Only            :
 Root                 : 
 Extra Options        : uidmap=*:root:@10.1.1.2
 Recursive            : true
-Modifed NFS share for folder 'pool/nfs/backup'</td>
-  </tr>
-</table>
-
+Modifed NFS share for folder 'pool/nfs/backup'
+```
 
 Note: 10.1.1.2 - IP address of Openstack Cinder host.
 
 Steps for NexentaStor 5.x:
-
-<table>
-  <tr>
-    <td>CLI@host> filesystem create -p pool/nfs/backup
-CLI@host> nfs share -o uidMap='*:root:@10.1.1.2' pool/nfs/backup</td>
-  </tr>
-</table>
-
+```
+CLI@host> filesystem create -p pool/nfs/backup
+CLI@host> nfs share -o uidMap='*:root:@10.1.1.2' pool/nfs/backup
+```
 
 Note: 10.1.1.2 - IP address of Openstack Cinder host.
 
@@ -922,18 +931,19 @@ Note: 10.1.1.2 - IP address of Openstack Cinder host.
 
 grep for "Traceback" in your Openstack logs folder, default is
 
-/var/log/<openstack-project>/, for example:
-/var/log/cinder/cinder-voume.log
+*/var/log/openstack-project*, for example: ```/var/log/cinder/cinder-volume.log```
 
 Most of the errors related to storage are in Cinder or Nova logs.
 
 If the error is not self explanatory, enable the debug logging, restart the service and try to reproduce the error. Debug loggings will trace all calls to Nexenta, which allows to narrow down the possible cause of the error.
 
 To enable debug in cinder, add the following line to cinder.conf:
+```
+[DEFAULT]
 debug=True
+```
 
-And restart cinder-volume:
-service cinder-volume restart
+And restart cinder-volume: ```sudo service cinder-volume restart```
 
 ## Glance
 
@@ -987,20 +997,16 @@ How to setup Manila Plugin
 
 ### Deployment
 
-Devstack environment:
-
-<table>
-  <tr>
-    <td>root# useradd -s /bin/bash -d /opt/stack -m stack
+Create DevStack user:
+```
+root# useradd -s /bin/bash -d /opt/stack -m stack
 root# echo "stack ALL=(ALL) NOPASSWD: ALL" | tee /etc/sudoers.d/stack
-root# passwd stack</td>
-  </tr>
-</table>
+root# passwd stack
+```
 
-
-<table>
-  <tr>
-    <td>stack$ git clone https://git.openstack.org/openstack-dev/devstack
+Deploy DevStack environment:
+```
+stack$ git clone https://git.openstack.org/openstack-dev/devstack
 stack$ cd devstack
 stack$ cat local.conf <<'EOF'
 [[local|localrc]]
@@ -1013,19 +1019,17 @@ RECLONE=True
 enable_plugin manila https://github.com/openstack/manila
 EOF
 
-stack$ ./stack.sh</td>
-  </tr>
-</table>
-
+stack$ ./stack.sh
+```
 
 manila.conf driver section examples:
 
 NStor4:
-
-<table>
-  <tr>
-    <td>enabled_share_backends = ns4_nfs
+```
+[DEFAULT]
+enabled_share_backends = ns4_nfs
 enabled_share_protocols = NFS
+
 [ns4_nfs]
 service_instance_user = manila
 service_image_name = manila-service-image
@@ -1039,17 +1043,15 @@ nexenta_volume = <volume name on appliance>
 nexenta_nfs_share = <nfs_share_name>
 nexenta_user = <NexentaStor username>
 nexenta_password = <NexentaStor password>
-nexenta_thin_provisioning = False/True</td>
-  </tr>
-</table>
-
+nexenta_thin_provisioning = False/True
+```
 
 NStor5:
-
-<table>
-  <tr>
-    <td>enabled_share_backends = ns5_nfs
+```
+[DEFAULT]
+enabled_share_backends = ns5_nfs
 enabled_share_protocols = NFS
+
 [ns5_nfs]
 service_instance_user = manila
 service_image_name = manila-service-image
@@ -1064,10 +1066,8 @@ nexenta_volume = <pool name on appliance>
 nexenta_share = <dataset name within the pool>
 nexenta_user = <NexentaStor username>
 nexenta_password = <NexentaStor password>
-nexenta_thin_provisioning = False/True</td>
-  </tr>
-</table>
-
+nexenta_thin_provisioning = False/True
+```
 
 List of all available options:
 
